@@ -1,0 +1,67 @@
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>Filtrar por nombre:</p>
+      <input
+        type="text"
+        placeholder="introduce nombre de la asignatura"
+        #inputNombre
+      />
+    </div>
+    <div class="col">
+      <p>Filtrar por ciclos</p>
+      <input
+        type="text"
+        placeholder="introduce nombre de la asignatura"
+        #inputCiclo
+      />
+    </div>
+    <div class="col">
+      <p>Filtrar por conocimientos</p>
+      <input
+        type="text"
+        placeholder="Selecciona un conocimiento"
+        #inputConocimiento
+      />
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col d-grid gap-3">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="
+          comparar(inputNombre.value, inputCiclo.value, inputConocimiento.value)
+        "
+      >
+        Filtrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2>Los resultado de busqueda son: {{ contador }}</h2>
+  <br />
+  <div class="row">
+    <div class="col" *ngFor="let item of filtrado; let i = index">
+      <p></p>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <p class="card-text">Profesor: {{ item.profesor }}</p>
+          <p class="card-text">Ciclo: {{ item.ciclo }}</p>
+          <p class="card-text">Curso: {{ item.curso }}</p>
+          <li>{{ i + 1 }}</li>
+        </div>
+        <input type="hidden" ng-change="getdetails()" />
+        <div class="row">
+          <div class="col" *ngFor="let i of item.conocimientos">
+            <img [src]="i.imagen" class="configurar-imagen" alt="..." />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

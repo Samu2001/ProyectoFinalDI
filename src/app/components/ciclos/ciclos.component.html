@@ -1,0 +1,77 @@
+<h1>Los ciclos tecnologicos son</h1>
+<!--Visca Barsa-->
+
+<div class="container con">
+  <div class="row align-items-start" *ngFor="let i of pintarCiclo"></div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div
+        class="row align-items-center border border-primary"
+        *ngFor="let j of pintarAsignatura"
+      >
+        <div class="col-sm">
+          <div *ngIf="'DAM' == j.ciclo || 'DAM | DAW' == j.ciclo">
+            {{ j.nombre }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm" *ngFor="let j of pintarCiclo">
+          <div *ngIf="'DAM' == j.nombre">
+            <div class="card" style="width: 13.6rem">
+              <img [src]="j.imagen" class="card-imagen-configuracion" />
+              <div class="card-body">
+                <h5 class="card-title">{{ j.curso }} {{ j.nombre }}</h5>
+                <button
+                  routerLink="/detalleciclo"
+                  class="btn btn-primary"
+                  (click)="DatosDam(j.curso)"
+                >
+                  Ver detalle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="row border border-primary" *ngFor="let j of pintarAsignatura">
+        <div class="col-sm">
+          <div *ngIf="'DAW' == j.ciclo || 'DAM | DAW' == j.ciclo">
+            {{ j.nombre }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm" *ngFor="let j of pintarCiclo">
+          <div *ngIf="'DAW' == j.nombre">
+            <div class="card" style="width: 13.6rem">
+              <img
+                [src]="j.imagen"
+                class="card-imagen-configuracion"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ j.curso }} {{ j.nombre }}</h5>
+                <button
+                  routerLink="/detalleciclo"
+                  class="btn btn-primary"
+                  (click)="DatosDaw(j.curso)"
+                >
+                  Ver detalle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container"></div>

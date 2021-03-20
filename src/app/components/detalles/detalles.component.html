@@ -1,0 +1,39 @@
+<h1></h1>
+<!--Visca Barsa-->
+<div class="contenedor">
+  <div class="row mt-8">
+    <div class="col-sm-4 contenedor1">
+      <h2>Conocimientos necesarios</h2>
+      <br />
+      <img [src]="imagen" alt="..." class="img-thumbnail" />
+      <div class="row" *ngFor="let item of data.detalleFiltrado">
+        <ul *ngFor="let i of item.conocimientos">
+          <li>{{ i.nombre }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-8 contenedor2">
+      <h2>Las asignaturas del ciclo son:</h2>
+      <div class="row">
+        <div class="col" *ngFor="let item of data.detalleFiltrado">
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.nombre }}</h5>
+              <p class="card-text">Profesor:{{ item.profesor }}</p>
+              <p class="card-text">Ciclo:{{ item.ciclo }}</p>
+              <p class="card-text">Curso:{{ item.curso }}</p>
+              <div class="row">
+                <div class="col" *ngFor="let i of item.conocimientos">
+                  <img [src]="i.imagen" class="configurar-imagen" />
+                </div>
+              </div>
+              <div class="mt-4">
+                <button class="btn btn-primary">Ver detalle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
